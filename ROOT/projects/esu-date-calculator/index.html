@@ -186,9 +186,10 @@
 				formatted = `Formatted: ${year} ${monthStrings[month]}, ${day}`;
 				yearOnly = `Year Only: ${year}`;
 				eu4Style = `EU4 Date: ${year}.${month+1}.${day}`;
+                ags = `After Game Start: ${year - STARTING_OFFSET}`;
 
 				outputElement.innerHTML =
-					formatted + "<br>" + yearOnly + "<br>" + eu4Style;
+					formatted + "<br>" + yearOnly + "<br>" + eu4Style + "<br>" + ags;
 			}
 
 			function getEraValue() {
