@@ -121,7 +121,16 @@
 					finalYear = finalYear / SCALING_FACTOR + STARTING_OFFSET;
 				}
 
-				updateOutputWindow(finalYear, finalMonth, finalDay);
+                roundedYear = Math.floor(finalYear);
+                remainder = finalYear - roundedYear;
+                finalMonth = 12 * remainder;
+                roundedMonth = Math.floor(finalMonth);
+                remainder = finalMonth - roundedMonth;
+                finalDay = Math.floor(30 * remainder + 1);
+
+
+
+				updateOutputWindow(roundedYear, roundedMonth, finalDay);
 			}
 
 			function yearsFromEra(era) {
@@ -174,9 +183,9 @@
                 EU4 Date:	1.1.1
                 */
 
-				formatted = `Formatted:&#9;${year} ${monthStrings[month - 1]}, ${day}`;
-				yearOnly = `Year Only:&#9;${year}`;
-				eu4Style = `EU4 Date:&#9;${year}.${month}.${day}`;
+				formatted = `Formatted: ${year} ${monthStrings[month]}, ${day}`;
+				yearOnly = `Year Only: ${year}`;
+				eu4Style = `EU4 Date: ${year}.${month+1}.${day}`;
 
 				outputElement.innerHTML =
 					formatted + "<br>" + yearOnly + "<br>" + eu4Style;
