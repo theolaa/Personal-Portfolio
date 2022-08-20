@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<link href="/css/theme.css" rel="stylesheet" />
+
+		<title>ESU Date Calculator</title>
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+	</head>
+	<body class="bg-dark">
+		<div class="container pt-3">
+			<header class="m-0 p-3 text-dark bg-theme header-theme">
+				<h1>ESU Date Calculator</h1>
+			</header>
+			<section class="content-section">
+				<div id="calculator">
+					<label for="era">Era</label>
+					<input
+						type="number"
+						name="era"
+						id="era"
+						min="1"
+						max="4"
+						value="1"
+						onchange="eraChanged()"
+					/>
+					<label for="year">Year</label>
+					<input
+						type="number"
+						name="year"
+						id="year"
+						min="1"
+						max="4"
+						value="0"
+						onchange="yearChanged()"
+					/>
+					<input
+						type="submit"
+						value="Calculate"
+						id="submit"
+						onclick="convert()"
+					/>
+				</div>
+				<div><pre id="output"></pre></div>
+			</section>
+			<footer class="footer footer-theme">
+				<div class="footer-theme">
+					&copy; Theo Laanstra <span id="footerYear">----</span>
+				</div>
+			</footer>
+		</div>
+		<script type="text/javascript">
+			document.getElementById("footerYear").innerText =
+				new Date().getFullYear();
+		</script>
+		<script type="text/javascript">
+			var loreEraDurations = [2920, 896, 433, 201];
+			monthStrings = [
+				"Morning Star",
+				"Sun's Dawn",
+				"First Seed",
+				"Rain's Hand",
+				"Second Seed",
+				"Midyear",
+				"Sun's Height",
+				"Last Seed",
+				"Hearthfire",
+				"Frostfall",
+				"Sun's Dusk",
+				"Evening Star",
+			];
+
+			var eraElement = document.getElementById("era");
+			var yearElement = document.getElementById("year");
+			var outputElement = document.getElementById("output");
+
+			const MIDDLE_DAWN_START = 1200;
+			const MIDDLE_DAWN_END = 2208;
+			const MIDDLE_DAWN_DURATION = MIDDLE_DAWN_END - MIDDLE_DAWN_START;
+			const SCALING_FACTOR = 2;
+			const STARTING_OFFSET = 57;
+
+			function validYearForEra(era, year) {
+				minYear = era == 1 ? 0 : 1;
+				return year >= minYear && year <= loreEraDurations[era - 1];
+			}
+
+			function convert() {
+				era = getEraValue();
+				year = getYearValue();
+
+				finalYear = 1;
+				finalMonth = 1;
+				finalDay = 1;
+
+				// Before Middle Dawn
+				if (era == 1 && year < MIDDLE_DAWN_START) {
+					finalYear = year / SCALING_FACTOR + STARTING_OFFSET;
+				}
+				// During Middle Dawn
+				else if (
+					era == 1 &&
+					year >= MIDDLE_DAWN_START &&
+					year <= MIDDLE_DAWN_END
+				) {
+					finalYear = MIDDLE_DAWN_START / SCALING_FACTOR + STARTING_OFFSET;
+				}
+				// After Middle Dawn
+				else {
+					finalYear = year + yearsFromEra(era);
+					finalYear -= MIDDLE_DAWN_DURATION;
+					finalYear = finalYear / SCALING_FACTOR + STARTING_OFFSET;
+				}
+
+				updateOutputWindow(finalYear, finalMonth, finalDay);
+			}
+
+			function yearsFromEra(era) {
+				result = 0;
+				for (i = 0; i < era - 1; i++) {
+					result += loreEraDurations[i];
+				}
+				return result;
+			}
+
+			function eraChanged() {
+				era = getEraValue();
+				if (era > 0 && era < 5) {
+					updateYearSelectorRange();
+				} else {
+					alert(`Invalid era entered: ${era}\nValid eras are 1-4`);
+					eraElement.value = 1;
+				}
+			}
+
+			function yearChanged() {
+				era = getEraValue();
+				year = getYearValue();
+				minYear = era == 1 ? 0 : 1;
+				if (!(year >= minYear && year <= loreEraDurations[era - 1])) {
+					alert(
+						`Invalid year entered: ${year}\nValid years for ${era}E are ${minYear}-${
+							loreEraDurations[era - 1]
+						}`
+					);
+					yearElement.value = minYear;
+				}
+			}
+
+			function updateYearSelectorRange() {
+				era = getEraValue();
+				year = getYearValue();
+
+				yearElement.min = era == 1 ? 0 : 1;
+				yearElement.max = loreEraDurations[era - 1];
+				if (!validYearForEra(era, year)) {
+					yearElement.value = 1;
+				}
+			}
+
+			function updateOutputWindow(year, month, day) {
+				/*
+                Formatted:	1 Morning Star, 1
+                Year Only:	1
+                EU4 Date:	1.1.1
+                */
+
+				formatted = `Formatted:&#9;${year} ${monthStrings[month - 1]}, ${day}`;
+				yearOnly = `Year Only:&#9;${year}`;
+				eu4Style = `EU4 Date:&#9;${year}.${month}.${day}`;
+
+				outputElement.innerHTML =
+					formatted + "<br>" + yearOnly + "<br>" + eu4Style;
+			}
+
+			function getEraValue() {
+				return parseInt(document.getElementById("era").value);
+			}
+			function getYearValue() {
+				return parseInt(document.getElementById("year").value);
+			}
+
+			window.onload = updateYearSelectorRange();
+		</script>
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
