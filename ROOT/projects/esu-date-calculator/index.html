@@ -121,14 +121,12 @@
 					finalYear = finalYear / SCALING_FACTOR + STARTING_OFFSET;
 				}
 
-                roundedYear = Math.floor(finalYear);
-                remainder = finalYear - roundedYear;
-                finalMonth = 12 * remainder;
-                roundedMonth = Math.floor(finalMonth);
-                remainder = finalMonth - roundedMonth;
-                finalDay = Math.floor(30 * remainder + 1);
-
-
+				roundedYear = Math.floor(finalYear);
+				remainder = finalYear - roundedYear;
+				finalMonth = 12 * remainder;
+				roundedMonth = Math.floor(finalMonth);
+				remainder = finalMonth - roundedMonth;
+				finalDay = Math.floor(30 * remainder + 1);
 
 				updateOutputWindow(roundedYear, roundedMonth, finalDay);
 			}
@@ -143,6 +141,7 @@
 
 			function eraChanged() {
 				era = getEraValue();
+				
 				if (era > 0 && era < 5) {
 					updateYearSelectorRange();
 				} else {
@@ -154,6 +153,7 @@
 			function yearChanged() {
 				era = getEraValue();
 				year = getYearValue();
+
 				minYear = era == 1 ? 0 : 1;
 				if (!(year >= minYear && year <= loreEraDurations[era - 1])) {
 					alert(
@@ -185,20 +185,40 @@
 
 				formatted = `Formatted: ${year} ${monthStrings[month]}, ${day}`;
 				yearOnly = `Year Only: ${year}`;
-				eu4Style = `EU4 Date: ${year}.${month+1}.${day}`;
-                ags = `After Game Start: ${year - STARTING_OFFSET}`;
+				eu4Style = `EU4 Date: ${year}.${month + 1}.${day}`;
+				ags = `After Game Start: ${year - STARTING_OFFSET}`;
 
 				outputElement.innerHTML =
 					formatted + "<br>" + yearOnly + "<br>" + eu4Style + "<br>" + ags;
 			}
-
 			function getEraValue() {
-				return parseInt(document.getElementById("era").value);
+				eraElement.value = eraElement.value.trim();
+				value = parseInt(eraElement.value);
+				return value;
 			}
 			function getYearValue() {
-				return parseInt(document.getElementById("year").value);
+				yearElement.value = yearElement.value.trim();
+				value = parseInt(yearElement.value);
+				return value;
 			}
 
+			function formatPastedContent(e) {
+				var clipboardData, pastedData;
+
+				// Stop data actually being pasted into div
+				e.stopPropagation();
+				e.preventDefault();
+
+				// Get pasted data via clipboard API
+				clipboardData = e.clipboardData || window.clipboardData;
+				pastedData = clipboardData.getData("Text");
+
+				// Do whatever with pasteddata
+				yearElement.value = pastedData.trim();
+				yearChanged();
+			}
+
+			yearElement.addEventListener("paste", formatPastedContent);
 			window.onload = updateYearSelectorRange();
 		</script>
 		<script
