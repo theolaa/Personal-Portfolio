@@ -183,10 +183,10 @@
                 EU4 Date:	1.1.1
                 */
 
-				formatted = `Formatted: ${year} ${monthStrings[month]}, ${day}`;
+				formatted = `Formatted: ${day} ${monthStrings[month]}, ${year}`;
 				yearOnly = `Year Only: ${year}`;
 				eu4Style = `EU4 Date: ${year}.${month + 1}.${day}`;
-				ags = `After Game Start: ${year - STARTING_OFFSET}`;
+				ags = `Years After Game Start: ${year - STARTING_OFFSET}`;
 
 				outputElement.innerHTML =
 					formatted + "<br>" + yearOnly + "<br>" + eu4Style + "<br>" + ags;
