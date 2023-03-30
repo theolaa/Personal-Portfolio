@@ -154,7 +154,7 @@
 				era = getEraValue();
 				year = getYearValue();
 
-				minYear = era == 1 ? 0 : 1;
+				minYear = (era == 1 || era == 3) ? 0 : 1;
 				if (!(year >= minYear && year <= loreEraDurations[era - 1])) {
 					alert(
 						`Invalid year entered: ${year}\nValid years for ${era}E are ${minYear}-${
@@ -169,11 +169,9 @@
 				era = getEraValue();
 				year = getYearValue();
 
-				yearElement.min = era == 1 ? 0 : 1;
+				yearElement.min = (era == 1 || era == 3) ? 0 : 1;
 				yearElement.max = loreEraDurations[era - 1];
-				if (!validYearForEra(era, year)) {
-					yearElement.value = 1;
-				}
+				yearElement.value = yearElement.min;
 			}
 
 			function updateOutputWindow(year, month, day) {
