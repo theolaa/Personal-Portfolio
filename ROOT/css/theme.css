@@ -47,6 +47,7 @@ section.content-section {
 section>h3 {
     border-bottom: 2px solid #5c6a79;
     padding: 0 5px 5px 5px;
+    text-transform: uppercase;
 }
 
 /* Calculator */
@@ -56,4 +57,20 @@ div#calculator {
 
 div>pre#output {
     padding: 5px;
+}
+
+h5 {
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #00eb91 !important;
+}
+
+a:link, a:visited {
+    color: inherit;
 }
