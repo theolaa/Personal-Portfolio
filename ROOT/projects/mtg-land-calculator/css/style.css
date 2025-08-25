@@ -1,0 +1,76 @@
+h1,
+h3 {
+	text-align: center;
+}
+section {
+	padding: 10px;
+	max-width: 90%;
+	margin: 10px auto;
+}
+div.inputHolder {
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 3px;
+}
+img.pip {
+	padding: 5px;
+	height: 50px;
+	float: left;
+}
+input {
+	padding: 10px;
+	border-radius: 15px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.75);
+}
+input#lands {
+	box-sizing: border-box;
+	display: none;
+}
+label {
+	display: none;
+}
+button {
+	padding: 10px;
+	width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px;
+}
+body {
+	background-image: url("../images/bg.jpg");
+}
+select {
+	width: 100%;
+	padding: 10px;
+	border-radius: 15px;
+}
+div#popup {
+	width: 80%;
+	height: 80%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url("../images/bg.jpg");
+    border: 5px solid black;
+	border-radius: 15px;
+	box-sizing: border-box;
+    visibility: hidden;
+}
+div#buttonPositioner {
+	position: absolute;
+	box-sizing: border-box;
+	bottom: 0px;
+	width: 100%;
+	padding: 10px;
+}
+button#closeButton {
+	width: 100%;
+    margin: 0px;
+}
+table {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
