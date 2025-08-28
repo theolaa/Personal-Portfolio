@@ -4,7 +4,7 @@
 }
 
 h1,
-h3 {
+h2 {
 	font-family: planewalker-bold;
 	font-size: 48pt;
 	text-align: center;
@@ -14,7 +14,7 @@ h3 {
 	margin-bottom: 15px;
 }
 
-h3 {
+h2 {
 	font-size: 24pt;
 }
 
@@ -52,7 +52,7 @@ button {
     margin: 5px;
 }
 body {
-	background-image: url("../images/bg.jpg");
+	background-image: url("../images/bg.webp");
 }
 select {
 	width: 100%;
@@ -66,7 +66,7 @@ div#popup {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-image: url("../images/bg.jpg");
+	background-image: url("../images/bg.webp");
     border: 5px solid black;
 	border-radius: 15px;
 	box-sizing: border-box;
@@ -91,10 +91,12 @@ table {
 
 @font-face {
   font-family: planewalker;
+  font-display: auto;
   src: url(../fonts/Planewalker-38m6.ttf);
 }
 
 @font-face {
   font-family: planewalker-bold;
+  font-display: auto;
   src: url(../fonts/PlanewalkerBold-xZj5.ttf);
 }

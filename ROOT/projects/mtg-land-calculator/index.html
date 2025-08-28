@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-CA">
 	<head>
-		<title>MTG Land Calculator</title>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Calculate lands for your Magic: The Gathering deck"
+		/>
+		<meta
+			name="keywords"
+			content="Magic, Magic The Gathering, Magic: The Gathering, MTG, Land, Lands, Mana, Calculator, Deck, Deckbuilding, Deck building, Deck-building, Tool"
+		/>
+		<meta name="author" content="Theo L" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>MTG Land Calculator</title>
+
 		<link rel="stylesheet" href="css/style.css" />
-		<script type="text/javascript" src="js/MTGLandCalculator.js"></script>
+
+		<link rel="shortcut icon" href="images/favicon/favicon.ico" />
 
 		<link
 			rel="icon"
 			type="image/png"
-			href="images/favicon/favicon-96x96.png"
+			href="images/favicon/favicon-96x96.webp"
 			sizes="96x96"
 		/>
 		<link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="images/favicon/favicon.ico" />
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="images/favicon/apple-touch-icon.png"
+			href="images/favicon/apple-touch-icon.webp"
 		/>
 		<meta name="apple-mobile-web-app-title" content="MTG Land Calculator" />
 		<link rel="manifest" href="images/favicon/site.webmanifest" />
@@ -27,29 +39,29 @@
 			<h1>MTG Land Calculator</h1>
 		</header>
 		<section>
-			<h3>Colour Pips</h3>
+			<h2>Colour Pips</h2>
 			<div class="inputHolder">
-				<img class="pip" src="images/white.png" alt="White Mana Icon" />
+				<img class="pip" src="images/white.webp" alt="White Mana Icon" />
 				<input type="number" placeholder="0" min="0" id="white" name="white" />
 				<label for="white">White</label>
 			</div>
 			<div class="inputHolder">
-				<img class="pip" src="images/blue.png" alt="Blue Mana Icon" />
+				<img class="pip" src="images/blue.webp" alt="Blue Mana Icon" />
 				<input type="number" placeholder="0" min="0" id="blue" name="blue" />
 				<label for="blue">Blue</label>
 			</div>
 			<div class="inputHolder">
-				<img class="pip" src="images/black.png" alt="Black Mana Icon" />
+				<img class="pip" src="images/black.webp" alt="Black Mana Icon" />
 				<input type="number" placeholder="0" min="0" id="black" name="black" />
 				<label for="black">Black</label>
 			</div>
 			<div class="inputHolder">
-				<img class="pip" src="images/red.png" alt="Red Mana Icon" />
+				<img class="pip" src="images/red.webp" alt="Red Mana Icon" />
 				<input type="number" placeholder="0" min="0" id="red" name="red" />
 				<label for="red">Red</label>
 			</div>
 			<div class="inputHolder">
-				<img class="pip" src="images/green.png" alt="Green Mana Icon" />
+				<img class="pip" src="images/green.webp" alt="Green Mana Icon" />
 				<input type="number" placeholder="0" min="0" id="green" name="green" />
 				<label for="green">Green</label>
 			</div>
@@ -70,7 +82,7 @@
 			</div>
 		</section>
 		<section>
-			<h3>Total Lands</h3>
+			<h2>Total Lands</h2>
 			<div id="inputHolder">
 				<select
 					name="deckFormat"
@@ -90,7 +102,7 @@
 					id="lands"
 					name="lands"
 				/>
-				<label for="lands">Lands</label>
+				<label for="deckFormat">Deck Format</label>
 			</div>
 		</section>
 		<section>
@@ -109,7 +121,7 @@
 					</tr>
 					<tr id="tableWhiteRow">
 						<td>
-							<img src="images/white.png" alt="White Mana Icon" class="pip" />
+							<img src="images/white.webp" alt="White Mana Icon" class="pip" />
 						</td>
 						<td>White</td>
 						<td></td>
@@ -117,7 +129,7 @@
 					</tr>
 					<tr id="tableBlueRow">
 						<td>
-							<img src="images/blue.png" alt="Blue Mana Icon" class="pip" />
+							<img src="images/blue.webp" alt="Blue Mana Icon" class="pip" />
 						</td>
 						<td>Blue</td>
 						<td></td>
@@ -125,7 +137,7 @@
 					</tr>
 					<tr id="tableBlackRow">
 						<td>
-							<img src="images/black.png" alt="Black Mana Icon" class="pip" />
+							<img src="images/black.webp" alt="Black Mana Icon" class="pip" />
 						</td>
 						<td>Black</td>
 						<td></td>
@@ -133,7 +145,7 @@
 					</tr>
 					<tr id="tableRedRow">
 						<td>
-							<img src="images/red.png" alt="Red Mana Icon" class="pip" />
+							<img src="images/red.webp" alt="Red Mana Icon" class="pip" />
 						</td>
 						<td>Red</td>
 						<td></td>
@@ -141,7 +153,7 @@
 					</tr>
 					<tr id="tableGreenRow">
 						<td>
-							<img src="images/green.png" alt="Green Mana Icon" class="pip" />
+							<img src="images/green.webp" alt="Green Mana Icon" class="pip" />
 						</td>
 						<td>Green</td>
 						<td></td>
@@ -173,5 +185,6 @@
 				</button>
 			</div>
 		</div>
+		<script type="text/javascript" src="js/MTGLandCalculator.js"></script>
 	</body>
 </html>
