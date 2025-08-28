@@ -1,7 +1,23 @@
+* {
+	font-family: planewalker;
+	font-size: 18pt;
+}
+
 h1,
 h3 {
+	font-family: planewalker-bold;
+	font-size: 48pt;
 	text-align: center;
+	color: #3b89b1;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
+
+h3 {
+	font-size: 24pt;
+}
+
 section {
 	padding: 10px;
 	max-width: 90%;
@@ -33,8 +49,6 @@ label {
 button {
 	padding: 10px;
 	width: 100%;
-    font-weight: bold;
-    text-transform: uppercase;
     margin: 5px;
 }
 body {
@@ -73,4 +87,14 @@ table {
     width: 100%;
     text-align: center;
     font-weight: bold;
+}
+
+@font-face {
+  font-family: planewalker;
+  src: url(../fonts/Planewalker-38m6.ttf);
+}
+
+@font-face {
+  font-family: planewalker-bold;
+  src: url(../fonts/PlanewalkerBold-xZj5.ttf);
 }
