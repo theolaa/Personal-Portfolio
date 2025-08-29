@@ -15,6 +15,16 @@
 
 		<title>MTG Land Calculator</title>
 
+		<link rel="preload" href="images/bg.webp" as="image" type="image/webp" />
+		<link
+			rel="preload"
+			href="images/textbg.webp"
+			as="image"
+			type="image/webp"
+		/>
+		<link rel="preload" href="fonts/Planewalker-38m6.ttf" as="font" crossorigin/>
+		<link rel="preload" href="fonts/PlanewalkerBold-xZj5.ttf" as="font" crossorigin/>
+
 		<link rel="stylesheet" href="css/style.css" />
 
 		<link rel="shortcut icon" href="images/favicon/favicon.ico" />
@@ -84,6 +94,7 @@
 		<section>
 			<h2>Total Lands</h2>
 			<div id="inputHolder">
+				<label for="deckFormat">Deck Format</label>
 				<select
 					name="deckFormat"
 					id="deckFormat"
@@ -94,7 +105,7 @@
 					<option value="commander">Commander (37/100 cards)</option>
 					<option value="custom">Custom Amount</option>
 				</select>
-				<label for="deckFormat">Deck Format</label>
+				<label for="lands">Total Lands</label>
 				<input
 					type="number"
 					placeheholder="17"

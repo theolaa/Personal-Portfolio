@@ -86,34 +86,50 @@ function calculate() {
 	if (whiteToInclude > 0) {
 		whiteRow.style.display = "table-row";
 		whiteRow.children[2].innerText = whiteToInclude;
-		whiteRow.children[3].innerText = ((whiteToInclude / totalSuggested) * 100).toFixed(1);
+		whiteRow.children[3].innerText = (
+			(whiteToInclude / totalSuggested) *
+			100
+		).toFixed(1);
 	}
 	if (blueToInclude > 0) {
 		blueRow.style.display = "table-row";
 		blueRow.children[2].innerText = blueToInclude;
-		blueRow.children[3].innerText = ((blueToInclude / totalSuggested) * 100).toFixed(1);
+		blueRow.children[3].innerText = (
+			(blueToInclude / totalSuggested) *
+			100
+		).toFixed(1);
 	}
 	if (blackToInclude > 0) {
 		blackRow.style.display = "table-row";
 		blackRow.children[2].innerText = blackToInclude;
-		blackRow.children[3].innerText = ((blackToInclude / totalSuggested) * 100).toFixed(1);
+		blackRow.children[3].innerText = (
+			(blackToInclude / totalSuggested) *
+			100
+		).toFixed(1);
 	}
 	if (redToInclude > 0) {
 		redRow.style.display = "table-row";
 		redRow.children[2].innerText = redToInclude;
-		redRow.children[3].innerText = ((redToInclude / totalSuggested) * 100).toFixed(1);
+		redRow.children[3].innerText = (
+			(redToInclude / totalSuggested) *
+			100
+		).toFixed(1);
 	}
 	if (greenToInclude > 0) {
 		greenRow.style.display = "table-row";
 		greenRow.children[2].innerText = greenToInclude;
-		greenRow.children[3].innerText = ((greenToInclude / totalSuggested) * 100).toFixed(1);
+		greenRow.children[3].innerText = (
+			(greenToInclude / totalSuggested) *
+			100
+		).toFixed(1);
 	}
 	if (colourlessToInclude > 0) {
 		colourlessRow.style.display = "table-row";
 		colourlessRow.children[2].innerText = colourlessToInclude;
-		colourlessRow.children[3].innerText = ((colourlessToInclude / totalSuggested) * 100).toFixed(
-			2
-		);
+		colourlessRow.children[3].innerText = (
+			(colourlessToInclude / totalSuggested) *
+			100
+		).toFixed(2);
 	}
 
 	document.getElementById("removalMessage").innerText = removalMessage;
