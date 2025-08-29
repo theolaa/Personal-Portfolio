@@ -8,14 +8,22 @@ h2 {
 	font-family: planewalker-bold;
 	font-size: 48pt;
 	text-align: center;
-	color: #3b89b1;
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	/* color: #3b89b1; */
+	background-image: url(../images/textbg.webp);
+	/* background: linear-gradient(135deg, red, blue); */
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke: 1px black;
+	/* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+		1px 1px 0 #000; */
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
 
 h2 {
 	font-size: 24pt;
+	-webkit-text-stroke: 0.5px black;
 }
 
 section {
@@ -33,11 +41,13 @@ img.pip {
 	height: 50px;
 	float: left;
 }
-input {
+input,
+select {
 	padding: 10px;
 	border-radius: 15px;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.75);
+	background-color: rgba(255, 255, 255, 0.6);
+	border: 3px inset rgb(92, 59, 9);
 }
 input#lands {
 	box-sizing: border-box;
@@ -49,7 +59,10 @@ label {
 button {
 	padding: 10px;
 	width: 100%;
-    margin: 5px;
+	margin: 5px;
+	/* background-color: #50a7ac; */
+	background-image: url(../images/buttonbg.webp);
+	border: 7px double #214c4e;
 }
 body {
 	background-image: url("../images/bg.webp");
@@ -67,10 +80,10 @@ div#popup {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-image: url("../images/bg.webp");
-    border: 5px solid black;
+	border: 5px solid black;
 	border-radius: 15px;
 	box-sizing: border-box;
-    visibility: hidden;
+	visibility: hidden;
 }
 div#buttonPositioner {
 	position: absolute;
@@ -81,22 +94,22 @@ div#buttonPositioner {
 }
 button#closeButton {
 	width: 100%;
-    margin: 0px;
+	margin: 0px;
 }
 table {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
 }
 
 @font-face {
-  font-family: planewalker;
-  font-display: auto;
-  src: url(../fonts/Planewalker-38m6.ttf);
+	font-family: planewalker;
+	font-display: swap;
+	src: url(../fonts/Planewalker-38m6.ttf);
 }
 
 @font-face {
-  font-family: planewalker-bold;
-  font-display: auto;
-  src: url(../fonts/PlanewalkerBold-xZj5.ttf);
+	font-family: planewalker-bold;
+	font-display: swap;
+	src: url(../fonts/PlanewalkerBold-xZj5.ttf);
 }
