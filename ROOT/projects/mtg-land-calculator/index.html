@@ -22,8 +22,18 @@
 			as="image"
 			type="image/webp"
 		/>
-		<link rel="preload" href="fonts/Planewalker-38m6.ttf" as="font" crossorigin/>
-		<link rel="preload" href="fonts/PlanewalkerBold-xZj5.ttf" as="font" crossorigin/>
+		<link
+			rel="preload"
+			href="fonts/Planewalker-38m6.ttf"
+			as="font"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="fonts/PlanewalkerBold-xZj5.ttf"
+			as="font"
+			crossorigin
+		/>
 
 		<link rel="stylesheet" href="css/style.css" />
 
@@ -45,156 +55,191 @@
 		<link rel="manifest" href="images/favicon/site.webmanifest" />
 	</head>
 	<body>
-		<header>
-			<h1>MTG Land Calculator</h1>
-		</header>
-		<section>
-			<h2>Colour Pips</h2>
-			<div class="inputHolder">
-				<img class="pip" src="images/white.webp" alt="White Mana Icon" />
-				<input type="number" placeholder="0" min="0" id="white" name="white" />
-				<label for="white">White</label>
+		<div id="mainContent">
+			<header>
+				<h1>MTG Land Calculator</h1>
+			</header>
+			<section>
+				<h2>Colour Pips</h2>
+				<div class="inputHolder">
+					<img class="pip" src="images/white.webp" alt="White Mana Icon" />
+					<input
+						type="number"
+						placeholder="0"
+						min="0"
+						id="white"
+						name="white"
+					/>
+					<label for="white">White</label>
+				</div>
+				<div class="inputHolder">
+					<img class="pip" src="images/blue.webp" alt="Blue Mana Icon" />
+					<input type="number" placeholder="0" min="0" id="blue" name="blue" />
+					<label for="blue">Blue</label>
+				</div>
+				<div class="inputHolder">
+					<img class="pip" src="images/black.webp" alt="Black Mana Icon" />
+					<input
+						type="number"
+						placeholder="0"
+						min="0"
+						id="black"
+						name="black"
+					/>
+					<label for="black">Black</label>
+				</div>
+				<div class="inputHolder">
+					<img class="pip" src="images/red.webp" alt="Red Mana Icon" />
+					<input type="number" placeholder="0" min="0" id="red" name="red" />
+					<label for="red">Red</label>
+				</div>
+				<div class="inputHolder">
+					<img class="pip" src="images/green.webp" alt="Green Mana Icon" />
+					<input
+						type="number"
+						placeholder="0"
+						min="0"
+						id="green"
+						name="green"
+					/>
+					<label for="green">Green</label>
+				</div>
+				<div class="inputHolder">
+					<img
+						class="pip"
+						src="images/colourless.svg"
+						alt="Colourless Mana Icon"
+					/>
+					<input
+						type="number"
+						placeholder="0"
+						min="0"
+						id="colourless"
+						name="colourless"
+					/>
+					<label for="colourless">Colourless</label>
+				</div>
+			</section>
+			<section>
+				<h2>Total Lands</h2>
+				<div id="inputHolder">
+					<label for="deckFormat">Deck Format</label>
+					<select
+						name="deckFormat"
+						id="deckFormat"
+						onchange="updateTotalLandsInput(this)"
+					>
+						<option value="limited">Limited (17/40 cards)</option>
+						<option value="constructed">Constructed (23/60 cards)</option>
+						<option value="commander">Commander (37/100 cards)</option>
+						<option value="custom">Custom Amount</option>
+					</select>
+					<label for="lands">Total Lands</label>
+					<input
+						type="number"
+						placeheholder="17"
+						value="17"
+						min="0"
+						id="lands"
+						name="lands"
+					/>
+				</div>
+			</section>
+			<section>
+				<div class="inputHolder">
+					<button id="reset" onclick="reset()">Reset</button>
+					<button id="calculate" onclick="calculate()">Calculate</button>
+				</div>
+			</section>
+			<div id="popup">
+				<div id="popupContent">
+					<table>
+						<tr>
+							<th colspan="2">Mana</th>
+							<th>Amount</th>
+							<th>%</th>
+						</tr>
+						<tr id="tableWhiteRow">
+							<td>
+								<img
+									src="images/white.webp"
+									alt="White Mana Icon"
+									class="pip"
+								/>
+							</td>
+							<td>White</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr id="tableBlueRow">
+							<td>
+								<img src="images/blue.webp" alt="Blue Mana Icon" class="pip" />
+							</td>
+							<td>Blue</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr id="tableBlackRow">
+							<td>
+								<img
+									src="images/black.webp"
+									alt="Black Mana Icon"
+									class="pip"
+								/>
+							</td>
+							<td>Black</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr id="tableRedRow">
+							<td>
+								<img src="images/red.webp" alt="Red Mana Icon" class="pip" />
+							</td>
+							<td>Red</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr id="tableGreenRow">
+							<td>
+								<img
+									src="images/green.webp"
+									alt="Green Mana Icon"
+									class="pip"
+								/>
+							</td>
+							<td>Green</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr id="tableColourlessRow">
+							<td>
+								<img
+									src="images/colourless.svg"
+									alt="Colourless Mana Icon"
+									class="pip"
+								/>
+							</td>
+							<td>Colourless</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="4" id="removalMessage">Removal Message</td>
+						</tr>
+					</table>
+				</div>
+				<div id="buttonPositioner">
+					<button
+						id="closeButton"
+						onclick="document.getElementById('popup').style.visibility = 'hidden'"
+					>
+						Close
+					</button>
+				</div>
 			</div>
-			<div class="inputHolder">
-				<img class="pip" src="images/blue.webp" alt="Blue Mana Icon" />
-				<input type="number" placeholder="0" min="0" id="blue" name="blue" />
-				<label for="blue">Blue</label>
-			</div>
-			<div class="inputHolder">
-				<img class="pip" src="images/black.webp" alt="Black Mana Icon" />
-				<input type="number" placeholder="0" min="0" id="black" name="black" />
-				<label for="black">Black</label>
-			</div>
-			<div class="inputHolder">
-				<img class="pip" src="images/red.webp" alt="Red Mana Icon" />
-				<input type="number" placeholder="0" min="0" id="red" name="red" />
-				<label for="red">Red</label>
-			</div>
-			<div class="inputHolder">
-				<img class="pip" src="images/green.webp" alt="Green Mana Icon" />
-				<input type="number" placeholder="0" min="0" id="green" name="green" />
-				<label for="green">Green</label>
-			</div>
-			<div class="inputHolder">
-				<img
-					class="pip"
-					src="images/colourless.svg"
-					alt="Colourless Mana Icon"
-				/>
-				<input
-					type="number"
-					placeholder="0"
-					min="0"
-					id="colourless"
-					name="colourless"
-				/>
-				<label for="colourless">Colourless</label>
-			</div>
-		</section>
-		<section>
-			<h2>Total Lands</h2>
-			<div id="inputHolder">
-				<label for="deckFormat">Deck Format</label>
-				<select
-					name="deckFormat"
-					id="deckFormat"
-					onchange="updateTotalLandsInput(this)"
-				>
-					<option value="limited">Limited (17/40 cards)</option>
-					<option value="constructed">Constructed (23/60 cards)</option>
-					<option value="commander">Commander (37/100 cards)</option>
-					<option value="custom">Custom Amount</option>
-				</select>
-				<label for="lands">Total Lands</label>
-				<input
-					type="number"
-					placeheholder="17"
-					value="17"
-					min="0"
-					id="lands"
-					name="lands"
-				/>
-			</div>
-		</section>
-		<section>
-			<div class="inputHolder">
-				<button id="reset" onclick="reset()">Reset</button>
-				<button id="calculate" onclick="calculate()">Calculate</button>
-			</div>
-		</section>
-		<div id="popup">
-			<div id="popupContent">
-				<table>
-					<tr>
-						<th colspan="2">Mana</th>
-						<th>Amount</th>
-						<th>%</th>
-					</tr>
-					<tr id="tableWhiteRow">
-						<td>
-							<img src="images/white.webp" alt="White Mana Icon" class="pip" />
-						</td>
-						<td>White</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr id="tableBlueRow">
-						<td>
-							<img src="images/blue.webp" alt="Blue Mana Icon" class="pip" />
-						</td>
-						<td>Blue</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr id="tableBlackRow">
-						<td>
-							<img src="images/black.webp" alt="Black Mana Icon" class="pip" />
-						</td>
-						<td>Black</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr id="tableRedRow">
-						<td>
-							<img src="images/red.webp" alt="Red Mana Icon" class="pip" />
-						</td>
-						<td>Red</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr id="tableGreenRow">
-						<td>
-							<img src="images/green.webp" alt="Green Mana Icon" class="pip" />
-						</td>
-						<td>Green</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr id="tableColourlessRow">
-						<td>
-							<img
-								src="images/colourless.svg"
-								alt="Colourless Mana Icon"
-								class="pip"
-							/>
-						</td>
-						<td>Colourless</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td colspan="4" id="removalMessage">Removal Message</td>
-					</tr>
-				</table>
-			</div>
-			<div id="buttonPositioner">
-				<button
-					id="closeButton"
-					onclick="document.getElementById('popup').style.visibility = 'hidden'"
-				>
-					Close
-				</button>
-			</div>
+			<footer>
+				&copy; Theo Laanstra 2025
+			</footer>
 		</div>
 		<script defer type="text/javascript" src="js/MTGLandCalculator.js"></script>
 	</body>
