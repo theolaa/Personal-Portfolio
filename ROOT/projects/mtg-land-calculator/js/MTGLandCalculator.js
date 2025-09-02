@@ -95,6 +95,14 @@ function calculate() {
 	greenToInclude = Math.round(greenPercentage * lands);
 	colourlessToInclude = Math.round(colourlessPercentage * lands);
 
+	// Ensure that all colours with a value provided have at least 1 suggested land
+	if (whitePercentage > 0 && whiteToInclude == 0) whiteToInclude = 1;
+	if (bluePercentage > 0 && blueToInclude == 0) blueToInclude = 1;
+	if (blackPercentage > 0 && blackToInclude == 0) blackToInclude = 1;
+	if (redPercentage > 0 && redToInclude == 0) redToInclude = 1;
+	if (greenPercentage > 0 && greenToInclude == 0) greenToInclude = 1;
+	if (colourlessPercentage > 0 && colourlessToInclude == 0) colourlessToInclude = 1;
+
 	// Sums the suggested values together, to check against the total number of required lands.
 	totalSuggested =
 		whiteToInclude +
