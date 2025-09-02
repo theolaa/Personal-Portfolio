@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-CA" prefix="og: https://ogp.me/ns#">
 	<head>
+		<!-- Standard Metadata -->
 		<meta charset="UTF-8" />
 		<meta
 			name="description"
@@ -13,6 +14,7 @@
 		<meta name="author" content="Theo L" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<!-- Open Graph Metadata -->
 		<meta property="og:title" content="Magic: The Gathering Land Calculator" />
 		<meta property="og:type" content="website" />
 		<meta
@@ -38,6 +40,8 @@
 			property="og:description"
 			content="Calculate which lands to include in your Magic: The Gathering deck"
 		/>
+
+		<!-- Twitter Metadata -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta property="twitter:domain" content="theolaa.ca" />
 		<meta
@@ -54,8 +58,7 @@
 			content="http://theolaa.ca/projects/mtg-land-calculator/images/og-thumbnail.jpg"
 		/>
 
-		<title>MTG Land Calculator</title>
-
+		<!-- Preload Assets -->
 		<link rel="preload" href="images/bg.webp" as="image" type="image/webp" />
 		<link
 			rel="preload"
@@ -76,10 +79,11 @@
 			crossorigin
 		/>
 
+		<!-- Styles -->
 		<link rel="stylesheet" href="css/style.css" />
 
+		<!-- Favicon and Touch Icons -->
 		<link rel="shortcut icon" href="images/favicon/favicon.ico" />
-
 		<link
 			rel="icon"
 			type="image/png"
@@ -94,8 +98,12 @@
 		/>
 		<meta name="apple-mobile-web-app-title" content="MTG Land Calculator" />
 		<link rel="manifest" href="images/favicon/site.webmanifest" />
+
+		<!-- Title -->
+		<title>MTG Land Calculator</title>
 	</head>
 	<body>
+		<!-- Input Form -->
 		<div class="mainContent">
 			<header>
 				<h1>MTG Land Calculator</h1>
@@ -192,6 +200,7 @@
 					<button id="calculate" onclick="calculate()">Calculate</button>
 				</div>
 			</section>
+			<!-- Results Popup -->
 			<div id="popup">
 				<div id="popupContent">
 					<table>
@@ -279,6 +288,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- Instructions -->
 		<div class="mainContent">
 			<h2>Instructions</h2>
 			<ol>
@@ -297,6 +307,7 @@
 				</li>
 			</ol>
 		</div>
+		<!-- Explanation -->
 		<div class="mainContent">
 			<h2>Interpreting the results</h2>
 			<p>
@@ -314,8 +325,8 @@
 				from your deck.
 			</p>
 		</div>
+		<!-- Copyright -->
 		<div class="mainContent" id="copyright">&copy; Theo Laanstra 2025</div>
-		<!-- <div id="spacer" style="margin-bottom: 100px"></div> -->
 		<script defer type="text/javascript" src="js/MTGLandCalculator.js"></script>
 	</body>
 </html>

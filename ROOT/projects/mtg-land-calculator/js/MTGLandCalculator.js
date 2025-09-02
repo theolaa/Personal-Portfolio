@@ -1,3 +1,5 @@
+// e is the HTML <select> element
+// input is the HTML text field
 function updateTotalLandsInput(e) {
 	value = e.value;
 	input = document.getElementById("lands");
@@ -21,14 +23,18 @@ function updateTotalLandsInput(e) {
 }
 
 function calculate() {
+	// Gets the value of all the colour pip fields
 	white = parseInt(document.getElementById("white").value);
 	blue = parseInt(document.getElementById("blue").value);
 	black = parseInt(document.getElementById("black").value);
 	red = parseInt(document.getElementById("red").value);
 	green = parseInt(document.getElementById("green").value);
 	colourless = parseInt(document.getElementById("colourless").value);
+
+	//Gets the value of the total lands field
 	lands = parseInt(document.getElementById("lands").value);
 
+	// Checks all colour pip values to ensure they are valid
 	if (isNaN(white) || white < 1) {
 		white = 0;
 		document.getElementById("white").value = "";
@@ -54,21 +60,25 @@ function calculate() {
 		document.getElementById("colourless").value = "";
 	}
 
+	// If all colour pip values are 0 or less (which accounts for negative values), display an error
 	if (white + blue + black + red + green + colourless < 1) {
 		alert("Empty Form: Please provide a value for at least one colour");
 		return;
 	}
 
+	// If the lands value is invalid, reset the lands <select> element and number input field, and show an error
 	if (isNaN(lands) || lands < 1) {
-		alert("Bad value for total lands")
+		alert("Bad value for total lands");
 		document.getElementById("lands").value = 17;
 		document.getElementById("lands").style.display = "none";
 		document.getElementById("deckFormat").value = "limited";
 		return;
 	}
 
+	// Total pips is the sum of all the colour pip values given in the form
 	totalPips = white + blue + black + red + green + colourless;
 
+	// The percentage of each colour out of all the pips given
 	whitePercentage = white / totalPips;
 	bluePercentage = blue / totalPips;
 	blackPercentage = black / totalPips;
@@ -76,6 +86,8 @@ function calculate() {
 	greenPercentage = green / totalPips;
 	colourlessPercentage = colourless / totalPips;
 
+	// The suggested amount of lands of each colour to include.
+	// Found by multiplying each colour's percentage by the desired number of lands in the deck, and rounding to the nearest integer.
 	whiteToInclude = Math.round(whitePercentage * lands);
 	blueToInclude = Math.round(bluePercentage * lands);
 	blackToInclude = Math.round(blackPercentage * lands);
@@ -83,6 +95,7 @@ function calculate() {
 	greenToInclude = Math.round(greenPercentage * lands);
 	colourlessToInclude = Math.round(colourlessPercentage * lands);
 
+	// Sums the suggested values together, to check against the total number of required lands.
 	totalSuggested =
 		whiteToInclude +
 		blueToInclude +
@@ -91,8 +104,10 @@ function calculate() {
 		greenToInclude +
 		colourlessToInclude;
 
+	// This value is the difference between the amount of lands that were suggested, and the amount required for the deck.
 	amountToRemove = totalSuggested - lands;
 
+	// Generates a removal message which prompts the user to add 1 land, remove 1 land, or if no changes are required, will be blank.
 	removalMessage =
 		amountToRemove != 0
 			? `${amountToRemove > 0 ? "Remove" : "Add"} ${Math.abs(
@@ -100,6 +115,7 @@ function calculate() {
 			  )} land${Math.abs(amountToRemove) > 1 ? "s" : ""} of your choice`
 			: "";
 
+	// Selects the results table row for each colour
 	whiteRow = document.getElementById("tableWhiteRow");
 	blueRow = document.getElementById("tableBlueRow");
 	blackRow = document.getElementById("tableBlackRow");
@@ -107,6 +123,7 @@ function calculate() {
 	greenRow = document.getElementById("tableGreenRow");
 	colourlessRow = document.getElementById("tableColourlessRow");
 
+	// Start with all of them hidden
 	whiteRow.style.display = "none";
 	blueRow.style.display = "none";
 	blackRow.style.display = "none";
@@ -114,6 +131,8 @@ function calculate() {
 	greenRow.style.display = "none";
 	colourlessRow.style.display = "none";
 
+	// Display each colour row if it had lands suggested
+	// Sets the amount to include, and displays each colour's percentage of the total land pool.
 	if (whiteToInclude > 0) {
 		whiteRow.style.display = "table-row";
 		whiteRow.children[2].innerText = whiteToInclude;
@@ -163,11 +182,14 @@ function calculate() {
 		).toFixed(2);
 	}
 
+	// Display the removal message
 	document.getElementById("removalMessage").innerText = removalMessage;
 
+	// Display the entire popup
 	document.getElementById("popup").style.visibility = "visible";
 }
 
+// Sets all form fields back to their default values
 function reset() {
 	document.getElementById("white").value = "";
 	document.getElementById("blue").value = "";

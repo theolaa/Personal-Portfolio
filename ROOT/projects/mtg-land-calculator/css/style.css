@@ -7,13 +7,8 @@
 	font-size: 18pt;
 }
 
-div.mainContent {
-	max-width: var(--maximum-content-width);
-	margin: 0 auto 15px auto;
-	background-color: rgba(0, 0, 0, 0.3);
-	padding: 15px;
-	border-radius: 25px;
-	border: 5px solid rgb(61, 38, 3);
+body {
+	background-image: url("../images/bg.webp");
 }
 
 h1,
@@ -44,16 +39,8 @@ section {
 	max-width: 90%;
 	margin: 10px auto;
 }
-div.inputHolder {
-	display: flex;
-	flex-wrap: nowrap;
-	padding: 3px;
-}
-img.pip {
-	padding: 5px;
-	height: 50px;
-	float: left;
-}
+
+
 input,
 select {
 	padding: 10px;
@@ -62,10 +49,16 @@ select {
 	background-color: rgba(255, 255, 255, 0.6);
 	border: 3px inset rgb(92, 59, 9);
 }
-input#lands {
-	box-sizing: border-box;
-	display: none;
+
+div.mainContent {
+	max-width: var(--maximum-content-width);
+	margin: 0 auto 15px auto;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 15px;
+	border-radius: 25px;
+	border: 5px solid rgb(61, 38, 3);
 }
+
 label {
 	display: none;
 }
@@ -77,14 +70,40 @@ button {
 	background-image: url(../images/buttonbg.webp);
 	border: 7px double #214c4e;
 }
-body {
-	background-image: url("../images/bg.webp");
-}
+
 select {
 	width: 100%;
 	padding: 10px;
 	border-radius: 15px;
 }
+
+li,
+p {
+	color: white;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.inputHolder {
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 3px;
+}
+img.pip {
+	padding: 5px;
+	height: 50px;
+	float: left;
+}
+
+input#lands {
+	box-sizing: border-box;
+	display: none;
+}
+
 div#popup {
 	max-width: var(--maximum-content-width);
 	width: 80%;
@@ -110,21 +129,11 @@ button#closeButton {
 	width: 100%;
 	margin: 0px;
 }
-table {
-	width: 100%;
-	text-align: center;
-	font-weight: bold;
-}
 
 div#copyright {
 	text-align: center;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 14pt;
-}
-
-li,
-p {
-	color: white;
 }
 
 @font-face {
