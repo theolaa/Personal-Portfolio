@@ -3,3 +3,5 @@ Disallow: /nogooglebot/
 
 User-agent: *
 Allow: /
+
+sitemap: https://theolaa.ca/sitemap.txt
