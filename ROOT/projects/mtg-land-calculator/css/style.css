@@ -7,9 +7,13 @@
 	font-size: 18pt;
 }
 
-div#mainContent {
+div.mainContent {
 	max-width: var(--maximum-content-width);
-	margin: 0 auto;
+	margin: 0 auto 15px auto;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 15px;
+	border-radius: 25px;
+	border: 5px solid rgb(61, 38, 3);
 }
 
 h1,
@@ -114,10 +118,13 @@ table {
 
 div#copyright {
 	text-align: center;
-	width: 100%;
-	max-width: var(--maximum-content-width);
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(255, 255, 255, 0.5);
 	font-size: 14pt;
+}
+
+li,
+p {
+	color: white;
 }
 
 @font-face {

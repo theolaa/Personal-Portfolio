@@ -64,6 +64,7 @@ function calculate() {
 		document.getElementById("lands").value = 17;
 		document.getElementById("lands").style.display = "none";
 		document.getElementById("deckFormat").value = "limited";
+		return;
 	}
 
 	totalPips = white + blue + black + red + green + colourless;

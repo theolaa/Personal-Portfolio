@@ -55,7 +55,7 @@
 		<link rel="manifest" href="images/favicon/site.webmanifest" />
 	</head>
 	<body>
-		<div id="mainContent">
+		<div class="mainContent">
 			<header>
 				<h1>MTG Land Calculator</h1>
 			</header>
@@ -237,8 +237,33 @@
 					</button>
 				</div>
 			</div>
-			<div id="copyright">&copy; Theo Laanstra 2025</div>
 		</div>
+		<div class="mainContent">
+			<h2>Instructions</h2>
+			<ol>
+				<li>
+					Count up all the colour pips in your spells' mana costs, and keep
+					track of how many of each colour you have.
+				</li>
+				<li>Input the numbers you get into the form above.</li>
+				<li>
+					Choose the default deck size that matches your deck, or choose a
+					custom amount if you have a specific number of lands in mind.
+				</li>
+				<li>
+					Press "Calculate" to see your results, or "Reset" to clear the form
+					and start again.
+				</li>
+			</ol>
+		</div>
+		<div class="mainContent">
+			<h2>Interpreting the results</h2>
+			<p>The numbers given in the "Amount" column indicate how many of each basic land to add to your deck.</p>
+			<p>If the results say to "Add 1 land of your choice", then choose the colour you think needs an extra land the most and add one more of that land to your deck.</p>
+			<p>If it says to "Remove 1 land of your choice", then choose the colour you think could stand to lose a land the most, and remove one of those lands from your deck.</p>
+		</div>
+		<div class="mainContent" id="copyright">&copy; Theo Laanstra 2025</div>
+		<!-- <div id="spacer" style="margin-bottom: 100px"></div> -->
 		<script defer type="text/javascript" src="js/MTGLandCalculator.js"></script>
 	</body>
 </html>
