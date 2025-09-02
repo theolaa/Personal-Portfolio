@@ -29,12 +29,42 @@ function calculate() {
 	colourless = parseInt(document.getElementById("colourless").value);
 	lands = parseInt(document.getElementById("lands").value);
 
-	if (isNaN(white)) white = 0;
-	if (isNaN(blue)) blue = 0;
-	if (isNaN(black)) black = 0;
-	if (isNaN(red)) red = 0;
-	if (isNaN(green)) green = 0;
-	if (isNaN(colourless)) colourless = 0;
+	if (isNaN(white) || white < 1) {
+		white = 0;
+		document.getElementById("white").value = "";
+	}
+	if (isNaN(blue) || blue < 1) {
+		blue = 0;
+		document.getElementById("blue").value = "";
+	}
+	if (isNaN(black) || black < 1) {
+		black = 0;
+		document.getElementById("black").value = "";
+	}
+	if (isNaN(red) || red < 1) {
+		red = 0;
+		document.getElementById("red").value = "";
+	}
+	if (isNaN(green) || green < 1) {
+		green = 0;
+		document.getElementById("green").value = "";
+	}
+	if (isNaN(colourless) || colourless < 1) {
+		colourless = 0;
+		document.getElementById("colourless").value = "";
+	}
+
+	if (white + blue + black + red + green + colourless < 1) {
+		alert("Empty Form: Please provide a value for at least one colour");
+		return;
+	}
+
+	if (isNaN(lands) || lands < 1) {
+		alert("Bad value for total lands")
+		document.getElementById("lands").value = 17;
+		document.getElementById("lands").style.display = "none";
+		document.getElementById("deckFormat").value = "limited";
+	}
 
 	totalPips = white + blue + black + red + green + colourless;
 
