@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-CA" prefix="og: https://ogp.me/ns#">
+	<head>
+		<!-- Standard Metadata -->
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Calculate how to split a bill between multiple people"
+		/>
+		<meta
+			name="keywords"
+			content="Calculator, Tool, Bill, Split, Friends, Group, Restaurant"
+		/>
+		<meta name="author" content="Theo L" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Open Graph Metadata -->
+		<meta property="og:title" content="Bill-Splitting Calculator" />
+		<meta
+			property="og:description"
+			content="Calculate how to split a bill between multiple people"
+		/>
+		<meta
+			property="og:url"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/"
+		/>
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:image"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/images/og-thumbnail.jpg"
+		/>
+		<meta
+			property="og:image:url"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/images/og-thumbnail.jpg"
+		/>
+		<meta
+			property="og:image:secure_url"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/images/og-thumbnail.jpg"
+		/>
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1080" />
+		<meta property="og:image:height" content="1080" />
+
+		<!-- Twitter Metadata -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="theolaa.ca" />
+		<meta
+			property="twitter:url"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/"
+		/>
+		<meta name="twitter:title" content="Bill-Splitting Calculator" />
+		<meta
+			name="twitter:description"
+			content="Calculate how to split a bill between multiple people"
+		/>
+		<meta
+			name="twitter:image"
+			content="https://theolaa.ca/projects/bill-splitting-calculator/images/og-thumbnail.jpg"
+		/>
+
+		<!-- Preload Assets -->
+		<!-- <link rel="preload" href="images/bg.webp" as="image" type="image/webp" /> -->
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Favicon and Touch Icons -->
+		<link rel="shortcut icon" href="images/favicon/favicon.ico" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="images/favicon/favicon-96x96.png"
+			sizes="96x96"
+		/>
+		<link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/favicon/apple-touch-icon.png"
+		/>
+		<meta
+			name="apple-mobile-web-app-title"
+			content="Bill-Splitting Calculator"
+		/>
+		<link rel="manifest" href="images/favicon/site.webmanifest" />
+
+		<!-- Title -->
+		<title>Bill-Splitting Calculator</title>
+	</head>
+	<body>
+		<!-- Input Form -->
+		<div class="mainContent">
+			<header>
+				<h1>Bill-Splitting Calculator</h1>
+			</header>
+			<section>
+				<h2>People</h2>
+				<div class="inputHolder">
+					<table>
+						<tr>
+							<th>Name</th>
+						</tr>
+						<tr class="personRow">
+							<td>
+								<input
+									type="text"
+									name="nameField"
+									class="nameField"
+									onchange="updateSelects()"
+									placeholder="Person's name"
+								/>
+							</td>
+							<td><button onclick="removePerson(this)">X</button></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<button onclick="addNewPerson(this)">+</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<button onclick="showItems(this)">Add Items</button>
+			</section>
+			<section id="items">
+				<h2>Items</h2>
+				<div class="inputHolder">
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Person</th>
+							<th>Cost</th>
+							<th>Discount</th>
+						</tr>
+						<tr class="itemRow">
+							<td>
+								<input
+									type="text"
+									name="itemNameField"
+									class="itemNameField"
+									onchange="updateSelects()"
+									placeholder="Item name"
+								/>
+							</td>
+							<td><select name="nameSelect" class="nameSelect"></select></td>
+							<td><input type="number" name="itemCost" /></td>
+							<td>
+								<select name="itemDiscount">
+									<option value="overall">Overall</option>
+									<option value="exempt">Exempt</option>
+									<option value="custom">Custom</option>
+								</select>
+							</td>
+							<td><button onclick="removePerson(this)">X</button></td>
+						</tr>
+						<tr>
+							<td colspan="5">
+								<button onclick="addNewPerson(this)">+</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</section>
+			<section>
+				<div class="inputHolder">
+					<button id="reset" onclick="reset()">Reset</button>
+					<button id="calculate" onclick="calculate()">Calculate</button>
+				</div>
+			</section>
+			<!-- Results Popup -->
+			<div id="popup">
+				<div id="popupContent"></div>
+				<div id="buttonPositioner">
+					<button
+						id="closeButton"
+						onclick="document.getElementById('popup').style.visibility = 'hidden'"
+					>
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Instructions -->
+		<div class="mainContent">
+			<h2>Instructions</h2>
+			<ol>
+				<li>
+					Count up all the colour pips in your spells' mana costs, and keep
+					track of how many pips of each colour you have.
+				</li>
+				<li>Input the numbers you get into the form above.</li>
+				<li>
+					Choose the default deck size that matches your deck, or choose a
+					custom amount if you have a specific number of lands in mind.
+				</li>
+				<li>
+					Press "Calculate" to see your results, or "Reset" to clear the form
+					and start again.
+				</li>
+			</ol>
+		</div>
+		<!-- Explanation -->
+		<div class="mainContent">
+			<h2>Interpreting the results</h2>
+			<p>
+				The numbers given in the "Amount" column indicate how many of each basic
+				land to add to your deck.
+			</p>
+			<p>
+				If the results say to "Add 1 land of your choice", then choose the
+				colour you think needs an extra land the most and add one more of that
+				land to your deck.
+			</p>
+			<p>
+				If it says to "Remove 1 land of your choice", then choose the colour you
+				think could stand to lose a land the most, and remove one of those lands
+				from your deck.
+			</p>
+		</div>
+		<!-- Copyright -->
+		<div class="mainContent" id="copyright">&copy; Theo Laanstra 2025</div>
+		<script
+			defer
+			type="text/javascript"
+			src="js/BillSplittingCalculator.js"
+		></script>
+	</body>
+</html>

@@ -1,0 +1,88 @@
+:root {
+	--maximum-content-width: 1000px;
+}
+
+* {
+	font-size: 18pt;
+}
+
+h1,
+h2 {
+	font-size: 48pt;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+h2 {
+	font-size: 24pt;
+}
+
+section {
+	padding: 10px;
+	max-width: 90%;
+	margin: 10px auto;
+}
+
+section#items {
+	display: none;
+}
+
+button {
+	width: 100%;
+}
+
+div.mainContent {
+	max-width: var(--maximum-content-width);
+	margin: 0 auto 15px auto;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 15px;
+	border: 5px solid rgb(61, 38, 3);
+}
+
+table {
+	width: 100%;
+	text-align: center;
+}
+
+td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+div.inputHolder {
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 3px;
+}
+
+div#popup {
+	max-width: var(--maximum-content-width);
+	width: 80%;
+	height: 80%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 5px solid black;
+	border-radius: 15px;
+	box-sizing: border-box;
+	visibility: hidden;
+}
+div#buttonPositioner {
+	position: absolute;
+	box-sizing: border-box;
+	bottom: 0px;
+	width: 100%;
+	padding: 10px;
+}
+button#closeButton {
+	width: 100%;
+	margin: 0px;
+}
+
+div#copyright {
+	text-align: center;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 14pt;
+}
